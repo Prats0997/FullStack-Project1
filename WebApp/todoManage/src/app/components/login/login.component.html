@@ -1,0 +1,28 @@
+<section class="login-sec">
+    <div class="container login-form-sec">
+        <form class="col-12" [formGroup]="loginForm">
+            <div class="row">
+                <div class="row">
+                    <div class="col-6 form-sec">
+                        <label>Username</label>
+                        <input type="text" formControlName="username" [(ngModel)]="userName">
+                    </div>
+                </div>
+               <div class="row"> 
+                    <div class="col-6 form-sec">
+                        <label>Password</label>
+                        <input type="password" formControlName="userpassword" [(ngModel)]="passWord">
+                    </div>
+               </div>
+               <div class="row">
+                    <p *ngIf="!validLogin;else successlogin">Please enter valid username/passowrd</p>
+                    <ng-template #successlogin>
+                        <p *ngIf="validLogin">User logged in successfully</p>
+                    </ng-template>
+               </div>
+                
+            </div>
+            <button [disabled]="!loginForm.valid" (click)="login()">Submit</button>
+        </form>
+    </div>
+</section>
