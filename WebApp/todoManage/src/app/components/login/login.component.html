@@ -1,28 +1,46 @@
-<section class="login-sec">
+<div class="login-sec">
     <div class="container login-form-sec">
-        <form class="col-12" [formGroup]="loginForm">
-            <div class="row">
-                <div class="row">
-                    <div class="col-6 form-sec">
-                        <label>Username</label>
-                        <input type="text" formControlName="username" [(ngModel)]="userName">
-                    </div>
-                </div>
-               <div class="row"> 
-                    <div class="col-6 form-sec">
-                        <label>Password</label>
-                        <input type="password" formControlName="userpassword" [(ngModel)]="passWord">
-                    </div>
-               </div>
-               <div class="row">
-                    <p *ngIf="!validLogin;else successlogin">Please enter valid username/passowrd</p>
-                    <ng-template #successlogin>
-                        <p *ngIf="validLogin">User logged in successfully</p>
-                    </ng-template>
-               </div>
-                
+        <form class="w-100" [formGroup]="loginForm">
+            <span class="login-form-title">Welcome</span>
+            <div class="form-sec m-b-8">
+                <mat-form-field appearance="fill" class="mat-form-field-sec">
+                    <mat-label class="form-label">Username</mat-label>
+                    <mat-icon matPrefix class="icon-color">perm_identity</mat-icon>
+                    <input matInput type="text" formControlName="username" placeholder="Enter your username"
+                        [(ngModel)]="userName">
+                </mat-form-field>
             </div>
-            <button [disabled]="!loginForm.valid" (click)="login()">Submit</button>
+            <div class="form-sec m-b-8 m-b-0">
+                <mat-form-field appearance="fill" class="mat-form-field-sec">
+                    <mat-label class="form-label">Password</mat-label>
+                    <mat-icon matPrefix class="icon-color">lock</mat-icon>
+                    <input matInput class="form-input" type="password" formControlName="userpassword"
+                        placeholder="Enter your password" [(ngModel)]="passWord">
+                </mat-form-field>
+            </div>
+            <div class="forgot-pass" (click)="forgotPassword()">
+                <a>Forgot password?</a>
+            </div>
+            <div class="error-msg">
+                <p *ngIf="!validLogin">Please enter valid username/password</p>
+            </div>
+            <div class="form-btn d-flex justify-content-center">
+                <button mat-raised-button [disabled]="!loginForm.valid" (click)="login()"><span>Login</span></button>
+            </div>
+            <div class="text-sec">
+                <span>Or Sign Up Using</span>
+            </div>
+            <div class="social-icons d-flex justify-content-center m-t-1">
+                <a href="#" class="social-item bg1">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="social-item bg2">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="social-item bg3">
+                    <i class="fa fa-google"></i>
+                </a>
+            </div>
         </form>
     </div>
-</section>
+</div>
