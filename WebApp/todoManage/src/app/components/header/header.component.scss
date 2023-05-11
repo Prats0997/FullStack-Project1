@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+header{
+    height: 52px;
+    background: aliceblue;
+    font-size: 1rem;
+    font-family: "Arvo";
+    .header-container{
+        height: inherit;
+    }
+    .ml-1{
+        margin-left: 1rem;
+    }
+    .cursor-pointer{
+        cursor: pointer;
+    }
+}

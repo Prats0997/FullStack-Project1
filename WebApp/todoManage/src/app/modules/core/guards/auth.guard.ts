@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
   ) {}
   canActivate() {
     if (!this.harcodedAuthenticationService.isAuthenticated) {
-      this.router.navigate(['login']);
+      this.router.navigate(['accounts']);
     }
     return this.harcodedAuthenticationService.isAuthenticated;
   }

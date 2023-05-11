@@ -3,15 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CoreModule } from 'src/app/modules/core/core.module';
 import { AuthGuard } from './modules/core/guards/auth.guard';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'accounts',
     loadChildren: () =>
       import('../app/modules/core/core.module').then((m) => m.CoreModule),
   },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'accounts', pathMatch: 'full' },
   {
     path: 'landing-page',
     loadChildren: () =>
