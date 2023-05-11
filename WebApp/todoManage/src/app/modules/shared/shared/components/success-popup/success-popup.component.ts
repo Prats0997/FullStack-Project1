@@ -22,6 +22,6 @@ export class SuccessPopupComponent implements OnInit {
   closePopup(): void {
     setInterval(() => {
       this.matDialogRef.close({ closeStatus: 'closed' });
-    }, 4000);
+    }, 2000);
   }
 }
