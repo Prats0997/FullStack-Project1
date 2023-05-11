@@ -8,25 +8,26 @@ import { SuccessPopupComponent } from 'src/app/modules/shared/shared/components/
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   userName: string = '';
   passWord: string = '';
   validLogin?: boolean = true;
   loginForm = this.fb.group({
-    username : ['', Validators.required],
-    userpassword: ['', Validators.required]
+    username: ['', Validators.required],
+    userpassword: ['', Validators.required],
   });
-  
-  constructor( private fb: FormBuilder,
+
+  constructor(
+    private fb: FormBuilder,
     public matDialog: MatDialog,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  login(): void{
+  login(): void {
     if (
       this.userName?.toLowerCase() === 'admin' &&
       this.passWord?.toLowerCase() === 'admin'
@@ -42,24 +43,26 @@ export class LoginComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result?.closeStatus?.toLowerCase() == 'closed') {
-          this.router.navigate(['welcome-page']);
+          sessionStorage.setItem('loggedin', 'successful');
+          this.router.navigate(['landing-page']);
         }
       });
     } else {
+      if (sessionStorage.getItem('loggedin'))
+        sessionStorage.removeItem('loggedin');
       this.validLogin = false;
     }
     this.initialiseLoginForm();
   }
 
-  initialiseLoginForm(): void{
+  initialiseLoginForm(): void {
     this.loginForm = this.fb.group({
-      username : ['', Validators.required],
-      userpassword: ['', Validators.required]
+      username: ['', Validators.required],
+      userpassword: ['', Validators.required],
     });
   }
 
-  forgotPassword(): void{
+  forgotPassword(): void {
     alert('Forgot Password');
   }
-
 }
