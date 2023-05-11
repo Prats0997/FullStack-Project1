@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import { SuccessPopupComponent } from 'src/app/modules/shared/shared/components/success-popup/success-popup.component';
+import { HarcodedAuthenticationService } from '../../service/harcoded-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -22,16 +23,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public matDialog: MatDialog,
-    private router: Router
-  ) {}
+    private router: Router,
+    public harcodedAuthenticationService: HarcodedAuthenticationService) { }
 
   ngOnInit(): void {}
 
-  login(): void {
-    if (
-      this.userName?.toLowerCase() === 'admin' &&
-      this.passWord?.toLowerCase() === 'admin'
-    ) {
+  login(): void{
+    if (this.harcodedAuthenticationService.authenticateUser(this.userName?.toLowerCase() ,  this.passWord?.toLowerCase())) {
       this.validLogin = true;
       const dialogRef = this.matDialog.open(SuccessPopupComponent, {
         width: '744px',
@@ -43,13 +41,10 @@ export class LoginComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe((result: any) => {
         if (result?.closeStatus?.toLowerCase() == 'closed') {
-          sessionStorage.setItem('loggedin', 'successful');
           this.router.navigate(['landing-page']);
         }
       });
     } else {
-      if (sessionStorage.getItem('loggedin'))
-        sessionStorage.removeItem('loggedin');
       this.validLogin = false;
     }
     this.initialiseLoginForm();

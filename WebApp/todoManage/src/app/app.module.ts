@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './modules/core/guards/auth.guard';
 import { CoreModule } from './modules/core/core.module';
-import { AuthService } from './services/auth.service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
@@ -17,7 +16,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     BrowserAnimationsModule,
     CoreModule,
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
