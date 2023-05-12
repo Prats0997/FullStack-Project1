@@ -9,15 +9,23 @@ import { CoreModule } from './modules/core/core.module';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { CustomMaterialModule } from './modules/material.module'
+import { CustomMaterialModule } from './modules/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent, PagenotfoundComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    PagenotfoundComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    CustomMaterialModule
+    CustomMaterialModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],
