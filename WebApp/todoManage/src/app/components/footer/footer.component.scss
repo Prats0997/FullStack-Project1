@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+footer{
+    font-family: "Arvo";
+}
+footer.footer-transparent {
+    border: none;
+}
+footer.footer {
+    padding: 0.8rem;
+}
+
+.px-2{
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+}
+.blue-grey.lighten-2 {
+    color: #90A4AE !important;
+}
+.left-span{
+    float: left;
+}
+.right-span{
+    float: right;
+}
+
+.icon-style{
+    color: #E91E63 !important;
+    position: relative;
+    top: 3px;
+    font-size: 20px;
+    left: 3px;
+}
